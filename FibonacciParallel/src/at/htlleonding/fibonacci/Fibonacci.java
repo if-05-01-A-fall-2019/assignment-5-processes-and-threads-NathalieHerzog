@@ -38,13 +38,20 @@ public class Fibonacci {
 
     static int getNumberParallel(int n) {
         Thread t1 = new Thread(new Runnable() {
-
+            
             @Override
             public void run() {
-                
+                number++;
             }
-            
         });
+
+        if(n < 2){
+            t1.start();
+        }
+        else{   
+            return getNumberParallel(n-1) + getNumberParallel(n-2);  
+        }  
+        
         return 1;
     }
     
